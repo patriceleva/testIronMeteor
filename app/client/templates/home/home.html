@@ -1,12 +1,49 @@
 <template name="Home">
-    <div class="home">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="#">Project name</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Login to continue</h1>
+        <p>{{> loginButtons}}</p>
+        <p>
+            {{#if currentUser}}
+                Vous êtes ici :
+            {{/if}}
+        </p>
+    </div>
+    {{#if currentUser}}
+    <div class="container">
         <img src="http://maps.googleapis.com/maps/api/staticmap?center={{loc.lat}},{{loc.lng}}&zoom=15&size=600x300&maptype=roadmap&markers=color:blue%7C{{loc.lat}},{{loc.lng}}" />
 
+        {{#if error}}
+            <p>Error: {{error.message}}</p>
+        {{/if}}
+
         <!--<h1>Find me in app\client\templates\home\home</h1>-->
-        <ul>
+        <div class="row">
             {{#each restaurants}}
-                <li>{{date}} - {{realise}}</li>
+                <div class="col-lg-4">
+                    <h4>{{date}}</h4>
+                    <p>{{realise}}</p>
+                </div>
             {{/each}}
-        </ul>
+        </div>
     </div>
+    {{/if}}
 </template>

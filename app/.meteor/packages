@@ -8,3 +8,8 @@ meteor-platform
 insecure
 iron:router
 mdg:geolocation
+bootstrap
+less
+nemo64:bootstrap
+accounts-password
+accounts-ui
