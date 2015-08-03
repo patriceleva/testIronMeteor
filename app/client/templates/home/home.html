@@ -1,10 +1,12 @@
 <template name="Home">
-  <div class="home">
-    <h1>Find me in app\client\templates\home\home</h1>
-      <ul>
-      {{#each restaurants}}
-          <li>{{date}} - {{realise}}</li>
-      {{/each}}
-      </ul>
-  </div>
+    <div class="home">
+        <img src="http://maps.googleapis.com/maps/api/staticmap?center={{loc.lat}},{{loc.lng}}&zoom=15&size=600x300&maptype=roadmap&markers=color:blue%7C{{loc.lat}},{{loc.lng}}" />
+
+        <!--<h1>Find me in app\client\templates\home\home</h1>-->
+        <ul>
+            {{#each restaurants}}
+                <li>{{date}} - {{realise}}</li>
+            {{/each}}
+        </ul>
+    </div>
 </template>
