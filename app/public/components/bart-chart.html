@@ -1,0 +1,155 @@
+<polymer-element name="bar-chart" attributes="jsonData">
+    <template>
+        <link rel="stylesheet" href="bart-chart.css">
+        <span class="bar-chart-example">
+            <svg id="barchart" width="{{ width }}" height="{{ height }}"></svg>
+        </span>
+    </template>
+    <script>
+        Polymer('bar-chart', {
+            response: null,
+            responseChanged : function(oldValue, newValue) {
+                //render bar-chart si utilisation du core Ajax
+                this.c.render(this.response);
+            },
+            created: function() {
+                this.data = this.data || [];
+                this.other = this.other || [];
+            },
+            ready: function() {
+
+                var self = this;
+
+                //this.data = this.response;
+                this.elem = this.$.barchart;
+
+                // create the bar-chart
+                this.c = this.barChart(this.elem);
+
+                var data = JSON.parse(this.jsonData);
+
+                this.c.render(data);
+            },
+            barChart: function (element) {
+
+                var data = [];
+                var that = {};
+
+                //var margin = {top: 60, right: 30, bottom: 30, left: 70},
+                var margin = {top: 30, right: 0, bottom: 70, left: 70},
+                        width = 730 - margin.left - margin.right,
+                        height = 450 - margin.top - margin.bottom;
+
+                var padding = 100;
+
+                var x = d3.scale.ordinal()
+                        .rangeRoundBands([0, width], .1);
+
+                var y = d3.scale.linear()
+                        .range([height, 0]);
+
+                // define the x scale (horizontal)
+                var mindate = new Date(2012,0,1),
+                        maxdate = new Date(2012,0,31);
+
+                var xScale = d3.time.scale().domain([mindate, maxdate]).range([padding, width - padding * 2]);
+
+                var xAxis = d3.svg.axis()
+                        .scale(x)
+                        .orient("bottom");
+                //.scale(xScale);
+
+                var yAxis = d3.svg.axis()
+                        .scale(y)
+                        .orient("left");
+                //.ticks(10, "");
+
+                that.render = function(data) {
+
+                    if (!data) return;
+
+                    var chart = d3.select(element)
+                            .attr("width", width + margin.left + margin.right)
+                            .attr("height", height + margin.top + margin.bottom)
+                            .append("g")
+                            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+                    x.domain(data.map(function(d) { return d.date; }));
+                    y.domain([0, d3.max(data, function(d) {
+                        return parseInt(d.realise);
+                    })]);
+
+
+                    chart.append("g")
+                            .attr("class", "x axis")
+                            .attr("transform", "translate(0," + height + ")")
+                            .call(xAxis)
+                            .selectAll("text")
+                            .style("text-anchor", "end")
+                            .attr("dx", "-.8em")
+                            .attr("dy", "-.5em")
+                            .attr("transform", function(d) {
+                                return "rotate(-90)"
+                            });
+
+                    chart.append("g")
+                            .attr("class", "y axis")
+                            .call(yAxis)
+                            .append("text")
+                            .attr("transform", "rotate(-90)")
+                            .attr("y", 6)
+                            .attr("dy", ".71em")
+                            .style("text-anchor", "end")
+                            .text("C.A.");
+
+                    chart.selectAll(".bar")
+                            .data(data)
+                            .enter().append("rect")
+                            .attr("class", "bar")
+                            .attr("x", function(d) { return x(d.date); })
+                            .attr("y", function(d) { return y(d.realise); })
+                            .attr("height", function(d) { return height - y(d.realise); })
+                            .attr("width", x.rangeBand());
+
+                };
+
+                that.updateBars = function(data) {
+                    // add bars
+                    var bars = svg.selectAll('.bar').data(data);
+
+                    bars.enter().append('rect');
+
+                    bars.exit().transition()
+                            .duration(500)
+                            .attr("height", 0)
+                            .remove();
+
+                    bars
+                            .transition()
+                            .duration(500)
+                            .attr('class', 'bar')
+                            .attr("x", function(d) {
+                                return x(d.date);
+                            })
+                            .attr("width", x.rangeBand())
+                            .attr("y", function(d) {
+                                return y(d.realise);
+                            })
+                            .attr("height", function(d) {
+                                return h - y(d.realise);
+                            });
+                };
+
+                that.updateAxis = function() {
+                    svg.selectAll("g.x.axis")
+                            .call(xAxis);
+
+                    svg.selectAll("g.y.axis")
+                            .call(yAxis);
+                };
+                return that;
+            }
+        });
+    </script>
+</polymer-element>
