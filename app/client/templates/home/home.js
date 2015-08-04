@@ -20,7 +20,8 @@ Template.Home.helpers({
     },
     error: Geolocation.error,
     attributeObject: function() {
-        return { jsonData : Restaurants.find({})};
+        Meteor.subscribe('get_restaurant')
+        return { jsonData : Restaurants.find({}) };
     }
 });
 

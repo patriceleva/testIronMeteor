@@ -1,53 +1,36 @@
 <template name="Home">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container marge">
-                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="brand" href="#">Test Geolocalize</a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
+
+
+   <!-- <core-scaffold id="core_scaffold">
+        <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
+            <core-toolbar id="core_toolbar">
+            </core-toolbar>
+            <core-menu valueattr="label" id="core_menu" theme="core-light-theme">
+                <core-item id="core_item" icon="settings" label="Item1" horizontal center layout active></core-item>
+                <core-item id="core_item1" icon="settings" label="Item2" horizontal center layout></core-item>
+            </core-menu>
+        </core-header-panel>
+        <div id="div" tool>Test polymer
         </div>
-    </div>
-    <div class="container">
-        <h1>Login to continue</h1>
-        <p>{{> loginButtons}}</p>
-        <p>
-            {{#if currentUser}}
-                Vous êtes ici :
-            {{/if}}
-        </p>
-    </div>
-    {{#if currentUser}}
+        <core-pages selected="0" selectedindex="0" notap id="core_pages">
+            <section id="section" active>
 
-        <div class="container">
-
-            {{> paper_checkbox }}
-
-            <img src="http://maps.googleapis.com/maps/api/staticmap?center={{loc.lat}},{{loc.lng}}&zoom=15&size=640x340&maptype=roadmap&markers=color:blue%7C{{loc.lat}},{{loc.lng}}" />
-
-            {{#if error}}
-                <p>Error: {{error.message}}</p>
-            {{/if}}
-
-            <!--<h1>Find me in app\client\templates\home\home</h1>-->
-            <div class="row">
                 {{#each restaurants}}
                     <div class="col-lg-4">
                         <h4>{{date}}</h4>
                         <p>{{realise}}</p>
                     </div>
                 {{/each}}
-            </div>
-        </div>
-    {{/if}}
+
+            </section>
+            <section id="section1">Page Two</section>
+        </core-pages>
+    </core-scaffold>-->
+
+
+    <sampler-scaffold label="Graph Polymer d3js">
+        <core-item label="test1" url="page1" ></core-item>
+        <core-item label="test2" url="page2" ></core-item>
+    </sampler-scaffold>
+
 </template>
