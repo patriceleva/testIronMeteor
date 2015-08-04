@@ -28,7 +28,11 @@
         </p>
     </div>
     {{#if currentUser}}
+
         <div class="container">
+
+            {{> paper_checkbox }}
+
             <img src="http://maps.googleapis.com/maps/api/staticmap?center={{loc.lat}},{{loc.lng}}&zoom=15&size=640x340&maptype=roadmap&markers=color:blue%7C{{loc.lat}},{{loc.lng}}" />
 
             {{#if error}}
@@ -46,10 +50,4 @@
             </div>
         </div>
     {{/if}}
-
-    {{> bart_chart attrs=attributeObject}}
-    <!--<sampler-scaffold label="Graph Polymer d3js">
-        <core-item label="d3js sample" url="" ></core-item>
-    </sampler-scaffold>-->
-
 </template>
