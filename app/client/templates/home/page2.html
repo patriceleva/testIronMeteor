@@ -1,3 +1,12 @@
 <template name="page2">
-page22222222222222222
+    <div class="container">
+        <div class="row">
+            {{#each restaurants}}
+                <div class="col-lg-4">
+                    <h4>{{date}}</h4>
+                    <p>{{realise}}</p>
+                </div>
+            {{/each}}
+        </div>
+    </div>
 </template>
