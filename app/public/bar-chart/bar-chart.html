@@ -1,13 +1,16 @@
+<link rel="import" href="../polymer/polymer.html">
+<script src="../d3/d3.min.js"></script>
+
 <polymer-element name="bar-chart" attributes="jsonData">
-    <template>
-        <link rel="stylesheet" href="bart-chart.css">
+    <template meteor-ignore="true">
+        <link rel="stylesheet" href="bar-chart.css">
         <span class="bar-chart-example">
             <svg id="barchart" width="{{ width }}" height="{{ height }}"></svg>
         </span>
     </template>
     <script>
         Polymer('bar-chart', {
-            response: null,
+            /*response: null,
             responseChanged : function(oldValue, newValue) {
                 //render bar-chart si utilisation du core Ajax
                 this.c.render(this.response);
@@ -15,7 +18,7 @@
             created: function() {
                 this.data = this.data || [];
                 this.other = this.other || [];
-            },
+            },*/
             ready: function() {
 
                 var self = this;
