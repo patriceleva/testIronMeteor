@@ -13,3 +13,21 @@ body {
 {
     margin-left: 120px;
 }
+
+body {
+
+    margin: 0;
+
+    height: 100vh;
+
+}
+
+#controlsToggle {
+
+    position: absolute;
+
+    left: 10%;
+
+    bottom: 10%;
+
+}

@@ -10,9 +10,10 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer",
-    "paper-elements": "Polymer/paper-elements",
-    "core-elements": "Polymer/core-elements",
-    "d3": "*"
+    "polymer": "Polymer/polymer#^1.0.0",
+    "google-map": "GoogleWebComponents/google-map#~1.0.3",
+    "iron-elements": "PolymerElements/iron-elements#~1.0.3",
+    "paper-elements": "PolymerElements/paper-elements#~1.0.4",
+    "google-signin": "GoogleWebComponents/google-signin#~1.0.3"
   }
 }

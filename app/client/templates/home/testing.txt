@@ -1,3 +1,9 @@
+
+<!--<sampler-scaffold label="Graph Polymer d3js">
+        <core-item label="Geolocalize" url="page1" ></core-item>
+        <core-item label="Bind Data" url="page2" ></core-item>
+    </sampler-scaffold>-->
+
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container marge">
@@ -53,3 +59,13 @@
         </div>
     </div>
 {{/if}}
+
+
+accounts-password    1.1.1  Password support for accounts
+accounts-ui          1.1.5  Simple templates to add login widgets to an app
+boxxa:polymer        1.0.0  Adds Polymer 1.0.0 Core to Meteor
+boxxa:polymer-paper  1.0.0  Adds Polymer 1.0.0 Paper Elements to Meteor
+insecure             1.0.3  Allow all database writes by default
+iron:router          1.0.9  Routing specifically designed for Meteor
+mdg:geolocation      1.0.3  Provides reactive geolocation on desktop and mobile.
+meteor-platform      1.2.2  Include a standard set of Meteor packages in your app
