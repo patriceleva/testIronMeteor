@@ -19,11 +19,11 @@ Template.Home.helpers({
     error: Geolocation.error
 });
 
-/*Tracker.autorun(function() {
+Tracker.autorun(function() {
  console.log(Geolocation.currentLocation());
  console.log(Geolocation.error());
  console.log(Geolocation.latLng());
- });*/
+ });
 
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */

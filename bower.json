@@ -14,6 +14,8 @@
     "google-map": "GoogleWebComponents/google-map#~1.0.3",
     "iron-elements": "PolymerElements/iron-elements#~1.0.3",
     "paper-elements": "PolymerElements/paper-elements#~1.0.4",
-    "google-signin": "GoogleWebComponents/google-signin#~1.0.3"
+    "google-signin": "GoogleWebComponents/google-signin#~1.0.3",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.3",
+    "app-layout-templates": "PolymerElements/app-layout-templates"
   }
 }

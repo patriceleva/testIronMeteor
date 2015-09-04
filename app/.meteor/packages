@@ -9,5 +9,6 @@ insecure
 iron:router
 ecwyne:polymer
 ecwyne:polymer-elements
-mdg:geolocation
 force-ssl
+mdg:geolocation
+autopublish
