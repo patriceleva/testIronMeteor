@@ -16,3 +16,13 @@ Router.route('/page2', {
     controller: 'Page2Controller',
     where: 'client'
 });
+
+/*Router.configure({
+    layoutTemplate: 'layout'
+});*/
+
+/*Router.map(function(){
+    this.route('home', {path: '/', data: {title: 'My title'}});
+    this.route('page1', {}) ;
+    this.route('page2');
+});*/

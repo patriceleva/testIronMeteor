@@ -1,0 +1,80 @@
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+
+<link rel="import" href="../../bower_components/paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+
+<dom-module id="component-index">
+
+    <link rel="import" type="css" href="component-index.css">
+
+    <template>
+
+        <paper-drawer-panel id="drawerPanel" responsive-width="1024px" drawer-width="{{drawerWidth}}">
+            <paper-header-panel class="list-panel" drawer mode="seamed">
+
+                <!-- List Toolbar -->
+                <paper-toolbar class$="{{toolbarClass}}"></paper-toolbar>
+
+                <!-- List -->
+                <paper-menu class="list" on-iron-activate="_listTap">
+                    <paper-item icon="home" label="Home" on-tap="menuSelected" mypath="/page1">Home</paper-item>
+                    <paper-item icon="polymer" label="Demo" on-tap="menuSelected" mypath="/page2">Demo</paper-item>
+                </paper-menu>
+
+            </paper-header-panel>
+
+            <paper-header-panel class="main-panel" main mode="{{mainMode}}">
+
+                <!-- Main Toolbar -->
+                <paper-toolbar class$="{{toolbarClass}}">
+                    <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+                </paper-toolbar>
+                <div class="content">
+                    <paper-material>
+                        <iframe id="frameView" scrolling="no" frameborder="no"></iframe>
+                    </paper-material>
+                </div>
+            </paper-header-panel>
+        </paper-drawer-panel>
+        <iron-media-query query="(max-width: 780px)" query-matches="{{_isMobile}}"></iron-media-query>
+
+    </template>
+    <script>
+
+        Polymer({
+            is: 'component-index',
+            properties: {
+                _isMobile: {
+                    type: Boolean,
+                    observer: '_isMobileChanged'
+                }
+            },
+
+            _listTap: function() {
+                this.$.drawerPanel.closeDrawer();
+            },
+
+            _isMobileChanged: function(isMobile) {
+                this.mainMode = isMobile ? 'seamed' : 'cover';
+                this.drawerWidth = isMobile ? '100%' : '320px';
+                this.toolbarClass = isMobile ? '' : 'tall';
+                this.updateStyles();
+            },
+            menuSelected: function (e) {
+                var mypath = e.currentTarget.getAttribute('mypath');
+
+                $('#frameView').attr('src', mypath);
+                //Router.go(mypath);
+            }
+
+        });
+
+    </script>
+
+</dom-module>
