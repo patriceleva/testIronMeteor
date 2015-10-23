@@ -29,6 +29,12 @@ Template.page2.onDestroyed(function () {
 
 Template.body.helpers({
 });
-/**
- * Created by insit05 on 04/08/2015.
- */
+
+
+function addMonths (date, value) {
+    var n = date.getDate();
+    date.setDate(1);
+    date.setMonth(date.getMonth() + value);
+    //date.setDate(Math.min(n, date.getDaysInMonth()));
+    return date;
+};

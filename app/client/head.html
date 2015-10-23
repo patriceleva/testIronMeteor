@@ -7,12 +7,24 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <!--<script src="/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>-->
-    <script src="/bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <style>
+        .bar {
+            fill: steelblue;
+        }
 
-    <link rel="import" href="/bower_components/google-map/google-map.html">
-    <link rel="import" href="/bower_components/google-map/google-map-marker.html">
-    <link rel="import" href="/bower_components/google-map/google-map-directions.html">
-    <link rel="import" href="/components/component-index/component-index.html">
+        .axis text {
+            font: 10px sans-serif;
+        }
 
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .x.axis path {
+            display: none;
+        }
+    </style>
 </head>

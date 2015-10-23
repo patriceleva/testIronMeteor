@@ -1,37 +1,76 @@
-<link rel="import" href="../polymer/polymer.html">
-<script src="../d3/d3.min.js"></script>
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
+<script src="../../bower_components/d3/d3.min.js"></script>
 
-<polymer-element name="bar-chart" attributes="jsonData">
-    <template meteor-ignore="true">
-        <link rel="stylesheet" href="bar-chart.css">
+<dom-module id="bar-chart">
+
+    <template>
+
+        <style>
+            .bar {
+                fill: steelblue;
+            }
+
+            .axis text {
+                font: 10px sans-serif;
+            }
+
+            .axis path,
+            .axis line {
+                fill: none;
+                stroke: #000;
+                shape-rendering: crispEdges;
+            }
+
+            .x.axis path {
+                display: none;
+            }
+        </style>
+        <!--<link rel="import" type="css" href="bar-chart.css">-->
+
         <span class="bar-chart-example">
             <svg id="barchart" width="{{ width }}" height="{{ height }}"></svg>
         </span>
+
+        <iron-media-query query="(max-width: 780px)" query-matches="{{_isMobile}}"></iron-media-query>
+
     </template>
+
     <script>
-        Polymer('bar-chart', {
-            /*response: null,
-            responseChanged : function(oldValue, newValue) {
-                //render bar-chart si utilisation du core Ajax
-                this.c.render(this.response);
+        Polymer({
+            is: 'bar-chart',
+            properties: {
+                _isMobile: {
+                    type: Boolean,
+                    observer: '_isMobileChanged'
+                },
+                jsonData: {
+                    type: Object,
+                    observer: '_FillControl'
+                }
             },
+            _isMobileChanged: function(isMobile) {
+                //this.mainMode = isMobile ? 'seamed' : 'cover';
+                //this.drawerWidth = isMobile ? '100%' : '320px';
+                //this.toolbarClass = isMobile ? '' : 'tall';
+                this.updateStyles();
+            },
+            /*
             created: function() {
                 this.data = this.data || [];
                 this.other = this.other || [];
             },*/
-            ready: function() {
-
+            _FillControl: function(jsonData)
+            {
                 var self = this;
 
-                //this.data = this.response;
                 this.elem = this.$.barchart;
 
                 // create the bar-chart
                 this.c = this.barChart(this.elem);
 
-                var data = JSON.parse(this.jsonData);
-
-                this.c.render(data);
+                this.c.render(this.jsonData);
+            },
+            ready: function() {
             },
             barChart: function (element) {
 
@@ -40,13 +79,13 @@
 
                 //var margin = {top: 60, right: 30, bottom: 30, left: 70},
                 var margin = {top: 30, right: 0, bottom: 70, left: 70},
-                        width = 730 - margin.left - margin.right,
-                        height = 450 - margin.top - margin.bottom;
+                        width = 430 - margin.left - margin.right,
+                        height = 250 - margin.top - margin.bottom;
 
                 var padding = 100;
 
                 var x = d3.scale.ordinal()
-                        .rangeRoundBands([0, width], .1);
+                        .rangeRoundBands([0, width], .2);
 
                 var y = d3.scale.linear()
                         .range([height, 0]);
@@ -153,6 +192,6 @@
                 };
                 return that;
             }
-        });
+        })
     </script>
-</polymer-element>
+</dom-module>

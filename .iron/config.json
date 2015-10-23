@@ -18,5 +18,11 @@
 
   "generator": {
     "comments": "true"
+  },
+
+  "mup": {
+    "version": "mup",
+    "development": "/config/development",
+    "production": "/config/production"
   }
 }
