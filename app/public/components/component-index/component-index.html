@@ -10,7 +10,55 @@
 
 <dom-module id="component-index">
 
-    <link rel="import" type="css" href="component-index.css">
+    <style>
+        :host {
+            display: block;
+        }
+
+        .main-panel {
+            background-color: #eee;
+        }
+
+        paper-toolbar {
+            background-color: #42A5F5;
+        }
+
+        .list {
+            padding: 0;
+            border-right: 1px solid #ccc;
+        }
+
+        .list paper-item {
+            height: 80px;
+            border-bottom: 1px solid #dedede;
+            background-color: #fafafa;
+        }
+
+        .main-panel[mode=cover] .content {
+            padding: 0 64px 0 4px;
+        }
+
+        .main-panel {
+        --paper-header-panel-cover-container: {
+             left: 64px;
+         };
+        }
+
+        paper-material {
+            height: 450px;
+            background-color: #fff;
+        }
+
+        #frameView{
+            height: 450px;
+            width: 100%;
+        }
+
+        .main-panel[mode=cover] paper-material {
+            max-width: 640px;
+            margin: 64px auto;
+        }
+    </style>
 
     <template>
 

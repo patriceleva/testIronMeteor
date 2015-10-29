@@ -1,11 +1,11 @@
 {
-  "polyfill": "/bower_components/webcomponentsjs/webcomponents.min.js",
-  "useShadowDom": false,
+  "polyfill": "/bower_components/webcomponentsjs/webcomponents-lite.min.js",
+  "useShadowDom": true,
   "imports": [
-    "/bower_components/google-map/google-map.html",
-    "/bower_components/google-map/google-map-marker.html",
-    "/bower_components/google-map/google-map-directions.html",
-    "/components/component-index/component-index.html",
-    "/components/bar-chart/bar-chart.html"
-  ]
+          "/bower_components/google-map/google-map.html",
+          "/bower_components/google-map/google-map-marker.html",
+          "/bower_components/google-map/google-map-directions.html",
+          "/components/component-index/component-index.html",
+          "/components/bar-chart/bar-chart.html"
+      ]
 }

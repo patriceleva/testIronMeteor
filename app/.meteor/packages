@@ -9,7 +9,6 @@ iron:router
 force-ssl
 mdg:geolocation
 d3
-differential:vulcanize
 standard-minifiers
 meteor-base
 mobile-experience
@@ -24,3 +23,4 @@ random
 ejson
 spacebars
 check
+differential:vulcanize

@@ -1,31 +1,30 @@
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <script src="../../bower_components/d3/d3.min.js"></script>
 
+<style>
+    .bar {
+        fill: steelblue;
+    }
+
+    .axis text {
+        font: 10px sans-serif;
+    }
+
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    .x.axis path {
+        display: none;
+    }
+</style>
+
 <dom-module id="bar-chart">
 
     <template>
-
-        <style>
-            .bar {
-                fill: steelblue;
-            }
-
-            .axis text {
-                font: 10px sans-serif;
-            }
-
-            .axis path,
-            .axis line {
-                fill: none;
-                stroke: #000;
-                shape-rendering: crispEdges;
-            }
-
-            .x.axis path {
-                display: none;
-            }
-        </style>
-        <!--<link rel="import" type="css" href="bar-chart.css">-->
 
         <span class="bar-chart-example">
             <svg id="barchart" width="{{ width }}" height="{{ height }}"></svg>
